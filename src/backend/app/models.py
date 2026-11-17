@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
 from sqlalchemy.orm import declarative_base
-from sqlalchemy_utils import ChoiceType
+
 
 #cria a conexão do seu banco
 db = create_engine("sqlite:///banco.db")
@@ -18,7 +18,6 @@ class Usuario(Base):
     email = Column ("email", String, nullable=False)
     senha = Column ("senha", String)
     ativo = Column ("ativo", Boolean)
-    admin = Column ("admin", Boolean, default=False)
     curador = Column ("curador", Boolean, default=False)
 
     def __init__(self, nome, email, senha, ativo=True, admin=False, curador=False ):
@@ -26,17 +25,10 @@ class Usuario(Base):
         self.email = email
         self.senha = senha
         self.ativo = ativo
-        self.admin = admin
         self.curador = curador
 
 class Projeto(Base):
     __tablename__ = "projetos"
-
-    # CATEGORIA_PROJETOS = (
-    #     ("EDUCACAO", "EDUCACAO"),
-    #     ("SAUDE", "SAUDE"),
-    #     ("MOBILIDADE URBANA", "MOBILIDADE URBANA")
-    # )
 
     id = Column("id", Integer, primary_key=True, autoincrement=True)
     categoria = Column("categoria", String) #educaçao, saude, meio-ambiente, mobilidade urbana

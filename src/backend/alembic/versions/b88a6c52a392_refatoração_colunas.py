@@ -1,8 +1,8 @@
-"""add a coluna curador
+"""refatoração colunas
 
-Revision ID: 80b034d4917d
+Revision ID: b88a6c52a392
 Revises: 
-Create Date: 2026-11-13 11:39:39.560835
+Create Date: 2026-11-17 11:22:21.919945
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '80b034d4917d'
+revision: str = 'b88a6c52a392'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -27,7 +27,6 @@ def upgrade() -> None:
     sa.Column('email', sa.String(), nullable=False),
     sa.Column('senha', sa.String(), nullable=True),
     sa.Column('ativo', sa.Boolean(), nullable=True),
-    sa.Column('admin', sa.Boolean(), nullable=True),
     sa.Column('curador', sa.Boolean(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )

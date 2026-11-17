@@ -6,8 +6,6 @@ class UsuarioSchema(BaseModel):
     email: str
     senha: str
     ativo: Optional[bool]
-    admin: Optional[bool]
-    curador: Optional[bool]
 
     @field_validator("senha")
     @classmethod
@@ -16,11 +14,17 @@ class UsuarioSchema(BaseModel):
             raise ValueError("A senha deve ter no máximo 72 bytes.")
         return senha
 
+    @field_validator("email")
+    @classmethod
+    def checar_dominio_gmail(cls, email: str) -> str:
+        if not email.lower().endswith("@gmail.com"):
+            raise ValueError("Apenas e-mails como dominio @gmail.com são permitidos.")
+        return email
+
 class Config:
     from_attributes = True
 
 class ProjetoSchema(BaseModel):
-    usuario: int
     descricao: str
     categoria: str
     
@@ -31,6 +35,14 @@ class Config:
 class LoginSchema(BaseModel):
     email:str
     senha:str
+
+    @field_validator("email")
+    @classmethod
+    def checar_dominio_gmail(cls, email: str) -> str:
+            if not email.lower().endswith("@gmail.com"):
+                raise ValueError("Apenas e-mails como dominio @gmail.com são permitidos.")
+            return email
+
 
 class Config:
     from_attributes = True

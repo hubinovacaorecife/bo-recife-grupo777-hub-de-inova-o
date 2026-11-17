@@ -33,17 +33,6 @@ def autenticar_usuario(email, senha, session):
     return usuario
 
 
-@auth_router.get("/")
-async def home():
-    """
-    Essa é a rota padrão de autenticação.
-    """
-    return {
-        "mensagem": "Você acessou a rota padrão de autenticação.",
-        "autenticado": False,
-    }
-
-
 @auth_router.post("/criar_conta")
 async def criar_conta(usuario_schema:UsuarioSchema, session = Depends(pegar_sessao)):
     usuario= session.query(Usuario).filter(Usuario.email==usuario_schema.email).first()
@@ -52,7 +41,7 @@ async def criar_conta(usuario_schema:UsuarioSchema, session = Depends(pegar_sess
 
     else:
         senha_criptografada = bcrypt_context.hash(usuario_schema.senha)
-        novo_usuario = Usuario(usuario_schema.nome,usuario_schema.email,senha_criptografada,admin=usuario_schema.admin,)
+        novo_usuario = Usuario(usuario_schema.nome,usuario_schema.email,senha_criptografada,)
         session.add(novo_usuario)
         session.commit()
         return{"mensagem":"Usuário cadastrado com sucesso"}
