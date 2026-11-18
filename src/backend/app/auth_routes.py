@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from .dependencies import pegar_sessao, verificar_refresh_token
+from .dependencies import pegar_sessao, verificar_refresh_token, verificar_token
 from .models import Usuario
 from .security import bcrypt_context, ALGORITHOM, ACESS_TOKEN_EXPIRE_MINUTES, SECRET_KEY
 from .schemas import UsuarioSchema, LoginSchema
@@ -84,27 +84,19 @@ async def use_refresh_token(usuario: Usuario = Depends(verificar_refresh_token))
         "access_token": acess_token,
         "token_type": "bearer",
     }
-        
+
+@auth_router.get("/auth_me")
+def obter_me(usuario: Usuario = Depends(verificar_token)):
+    if not usuario:
+         raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Usuário não encontrado.",)
+
+    return {
+        "id": usuario.id,
+        "nome": usuario.nome,
+        "email": usuario.email,
+        "ativo": usuario.ativo,
+    }
 
 
 
-
-
-
-
-# @auth_router.get("/me")
-# def obter_me(email: str, db: Session = Depends(get_db)):
-#     usuario = db.query(Usuario).filter(Usuario.email == email).first()
-#     if not usuario:
-#         raise HTTPException(
-#             status_code=status.HTTP_404_NOT_FOUND,
-#             detail="Usuário não encontrado.",
-#         )
-
-#     return {
-#         "id": usuario.id,
-#         "nome": usuario.nome,
-#         "email": usuario.email,
-#         "ativo": usuario.ativo,
-#         "admin": usuario.admin,
-#     }

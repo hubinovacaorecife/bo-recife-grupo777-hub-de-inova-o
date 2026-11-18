@@ -36,4 +36,16 @@ async def cancelar_projeto(id_projeto: int, session: Session = Depends(pegar_ses
         "mensagem": f"Projeto número: {id_projeto} cancelado com sucesso!",
         "projeto": projeto
     }
-    
+
+@projects_router.get("/listar")
+def listar_projetos(db: Session = Depends(pegar_sessao)):
+    projetos = db.query(Projeto).all()
+    if not projetos:
+        raise HTTPException(status_code=404, detail="Nenhum projeto encontrado")
+    return [
+        {
+        "descricao": projeto.descricao,
+        "categoria": projeto.categoria,
+    }
+    for projeto in projetos
+    ]

@@ -1,8 +1,8 @@
-"""refatoração colunas
+"""teste
 
-Revision ID: b88a6c52a392
+Revision ID: c5f1c796b3ce
 Revises: 
-Create Date: 2026-11-17 11:22:21.919945
+Create Date: 2026-11-17 19:25:06.693178
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'b88a6c52a392'
+revision: str = 'c5f1c796b3ce'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
