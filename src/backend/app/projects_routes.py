@@ -14,7 +14,9 @@ async def criar_projeto(projeto_schema: ProjetoSchema, session: Session = Depend
     novo_projeto = Projeto(
         usuario=projeto_schema.usuario,
         descricao=projeto_schema.descricao,
-        categoria=projeto_schema.categoria
+        categoria=projeto_schema.categoria,
+        data_criacao=projeto_schema.data_criacao,
+        status="Rascunho"
     )
     session.add(novo_projeto)
     session.commit()
@@ -37,9 +39,9 @@ async def cancelar_projeto(id_projeto: int, session: Session = Depends(pegar_ses
         "projeto": projeto
     }
 
-@projects_router.get("/listar")
-def listar_projetos(db: Session = Depends(pegar_sessao)):
-    projetos = db.query(Projeto).all()
+@projects_router.get("/listar{id_projeto}")
+def listar_projetos(id_projeto: int, db: Session = Depends(pegar_sessao)):
+    projetos = db.query(Projeto).filter(Projeto.id==id_projeto).first()
     if not projetos:
         raise HTTPException(status_code=404, detail="Nenhum projeto encontrado")
     return [
@@ -49,3 +51,28 @@ def listar_projetos(db: Session = Depends(pegar_sessao)):
     }
     for projeto in projetos
     ]
+
+@projects_router.get("/meus_projetos")
+def meus_projetos( session: Session = Depends(pegar_sessao)):
+    projeto = session.query(Projeto).filter().first()
+    if not projeto:
+        raise HTTPException(status_code=400,detail="Você ainda não possui nenhum projeto.")
+    
+    return {
+        "projeto": projeto
+    }
+
+@projects_router.patch("/editar_projeto")
+def editar_projetos(id_projeto: int, categoria: str, session: Session = Depends(pegar_sessao)):
+    projeto = session.query(Projeto).filter(Projeto.id==id_projeto, Projeto.categoria==categoria).first()
+    if not projeto:
+        raise HTTPException(status_code=400,detail="Projeto não encontrado")
+    editar_projetos = Projeto(
+        usuario=projeto.usuario,
+        descricao=projeto.descricao,
+        categoria=projeto.categoria,
+        status="Rascunho"
+    )
+    session.add(editar_projetos)
+    session.commit()
+    return{"mensagem": "Projeto editado com sucesso!"}
