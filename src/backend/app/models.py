@@ -36,14 +36,16 @@ class Projeto(Base):
     status = Column("status", String, default="Rascunho") #em análise, aprovado, reprovado, cancelado
     usuario = Column ("usuario", ForeignKey("usuarios.id"))
     data_criacao = Column("data_criacao", String)
+    protocolo = Column("protocolo", Integer, unique=True, index=True, nullable=False )
     
 
-    def __init__(self, usuario, descricao, categoria, status="Rascunho", data_criacao=None):
+    def __init__(self, usuario, protocolo, descricao, categoria, status="Rascunho", data_criacao=None):
         self.usuario = usuario
         self.descricao = descricao
         self.categoria = categoria
         self.status = status
         self.data_criacao = data_criacao
+        self.protocolo = protocolo
 
 
         

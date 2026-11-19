@@ -1,5 +1,6 @@
 from pydantic import BaseModel, ConfigDict, EmailStr, field_validator, Field
 from datetime import datetime
+import secrets
 
 # Domínios aceitos no cadastro. Para liberar qualquer domínio, use None.
 DOMINIOS_PERMITIDOS = {"gmail.com"}
@@ -58,6 +59,7 @@ class UsuarioOut(BaseModel):
 
 
 # ---------- Projetos ----------
+
 class ProjetoSchema(BaseModel):
     usuario: int
     descricao: str
