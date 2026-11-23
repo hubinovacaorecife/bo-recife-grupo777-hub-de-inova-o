@@ -66,6 +66,10 @@ class ProjetoSchema(BaseModel):
     categoria: str
     data_criacao: datetime = Field(default_factory=datetime.now)
 
+class ProjetoUpdate(BaseModel):
+    descricao: str = Field(min_length=1)
+    categoria: str = Field(min_length=1)
+
 class ProjetoOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 

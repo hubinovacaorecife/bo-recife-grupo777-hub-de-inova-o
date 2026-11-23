@@ -1,8 +1,8 @@
-"""add coluna de protocolo
+"""nova migration
 
-Revision ID: 9ffb769a6b96
+Revision ID: 7a0dd44fc894
 Revises: 
-Create Date: 2026-11-19 09:26:58.373620
+Create Date: 2026-11-23 10:25:12.282871
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '9ffb769a6b96'
+revision: str = '7a0dd44fc894'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
