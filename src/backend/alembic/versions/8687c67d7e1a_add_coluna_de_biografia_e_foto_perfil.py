@@ -1,8 +1,8 @@
-"""nova migration
+"""add coluna de biografia e foto_perfil
 
-Revision ID: 7a0dd44fc894
+Revision ID: 8687c67d7e1a
 Revises: 
-Create Date: 2026-11-23 10:25:12.282871
+Create Date: 2026-11-25 10:42:10.227627
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '7a0dd44fc894'
+revision: str = '8687c67d7e1a'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -28,6 +28,8 @@ def upgrade() -> None:
     sa.Column('senha', sa.String(), nullable=True),
     sa.Column('ativo', sa.Boolean(), nullable=True),
     sa.Column('curador', sa.Boolean(), nullable=True),
+    sa.Column('biografia', sa.Text(), nullable=True),
+    sa.Column('foto_perfil', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('projetos',

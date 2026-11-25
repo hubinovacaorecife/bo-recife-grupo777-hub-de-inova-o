@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ff">
+  <meta name="description" content="Explore os projetos cadastrados na REC SCIENCE.">
+  <title>Projetos · REC SCIENCE</title>
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/projects.css">
+</head>
+<body class="pagina-projetos">
+  <header class="topo">
+    <a class="marca" href="../index.html" aria-label="REC SCIENCE, página inicial">
+      <span class="marca-icone" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M8 9.5 16 16l8-6.5M9 23l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="8" cy="8" r="3" fill="currentColor"/>
+          <circle cx="24" cy="8" r="3" fill="currentColor"/>
+          <circle cx="16" cy="16" r="3.5" fill="#ffc83d"/>
+          <circle cx="8" cy="24" r="3" fill="currentColor"/>
+          <circle cx="24" cy="24" r="3" fill="currentColor"/>
+        </svg>
+      </span>
+      <span>REC <strong>SCIENCE</strong></span>
+    </a>
+    <nav class="navegacao" aria-label="Navegação principal">
+      <a href="../index.html">Início</a>
+      <a href="profile.html">Perfil</a>
+      <button class="botao pequeno" id="sair" type="button">Sair</button>
+    </nav>
+  </header>
+
+  <main class="projetos-main">
+    <section class="projetos-intro projetos-hero" aria-labelledby="titulo-projetos">
+      <div class="projetos-hero-conteudo">
+        <span class="projetos-hero-etiqueta"><span aria-hidden="true">✳</span> CIÊNCIA QUE TRANSFORMA</span>
+        <h1 id="titulo-projetos">Ideias que movem<br>o nosso Recife.</h1>
+        <p>Explore as iniciativas da comunidade e encontre inspiração para tirar sua ideia do papel.</p>
+        <a class="botao projetos-hero-acao" href="project_form.html">Compartilhar um projeto <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="projetos-hero-arte" aria-hidden="true">
+        <div class="projetos-orbita projetos-orbita-externa"></div>
+        <div class="projetos-orbita projetos-orbita-interna"></div>
+        <span class="projetos-hero-estrela">✳</span>
+        <span class="projetos-hero-no projetos-hero-no-a"></span>
+        <span class="projetos-hero-no projetos-hero-no-b"></span>
+        <span class="projetos-hero-no projetos-hero-no-c"></span>
+        <span class="projetos-hero-rotulo">PESQUISA<br>+ IMPACTO</span>
+      </div>
+    </section>
+
+    <section class="projetos-metricas" aria-label="Resumo dos projetos">
+      <article class="projeto-metrica projeto-metrica-destaque">
+        <span class="projeto-metrica-icone" aria-hidden="true">✳</span>
+        <span class="projeto-metrica-legenda">Na comunidade</span>
+        <strong id="metric-total">—</strong>
+        <span class="projeto-metrica-descricao">projetos cadastrados</span>
+      </article>
+      <article class="projeto-metrica">
+        <span class="projeto-metrica-legenda">Em rascunho</span>
+        <strong id="metric-rascunho">—</strong>
+        <span class="projeto-metrica-descricao">em desenvolvimento</span>
+      </article>
+      <article class="projeto-metrica">
+        <span class="projeto-metrica-legenda">Aprovados ou publicados</span>
+        <strong id="metric-aprovados">—</strong>
+        <span class="projeto-metrica-descricao">prontos para inspirar</span>
+      </article>
+    </section>
+
+    <section class="projetos-catalogo" aria-labelledby="lista-titulo">
+      <div class="projetos-lista-cabecalho">
+        <div>
+          <span class="sobretitulo">CONHECIMENTO EM MOVIMENTO</span>
+          <h2 id="lista-titulo">Conheça os projetos</h2>
+        </div>
+        <span id="projetos-contagem" class="projetos-contagem" hidden></span>
+      </div>
+      <div class="projetos-filtros">
+        <label class="projetos-busca" for="projetos-busca">
+          <span aria-hidden="true">⌕</span>
+          <input id="projetos-busca" type="search" placeholder="Buscar por descrição, categoria ou protocolo">
+        </label>
+        <label class="projetos-filtro-select" for="filtro-categoria">
+          <span class="sr-only">Filtrar por categoria</span>
+          <select id="filtro-categoria">
+            <option value="">Todas as áreas</option>
+          </select>
+        </label>
+        <label class="projetos-filtro-select" for="filtro-status">
+          <span class="sr-only">Filtrar por status</span>
+          <select id="filtro-status">
+            <option value="">Todos os status</option>
+          </select>
+        </label>
+      </div>
+      <div id="projetos-lista" class="projetos-lista" aria-live="polite" aria-busy="true">
+        <p class="projetos-carregando">Carregando projetos...</p>
+      </div>
+      <p class="projetos-erro" id="projetos-erro" role="alert" hidden></p>
+      <button class="botao botao-tentar" id="tentar-novamente" type="button" hidden>Tentar novamente</button>
+    </section>
+  </main>
+
+  <script type="module" src="../js/pages/projects.js"></script>
+</body>
+</html>

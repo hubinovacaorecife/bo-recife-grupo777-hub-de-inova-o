@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
+from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey, Text
 from sqlalchemy.orm import declarative_base
 
 
@@ -19,6 +19,8 @@ class Usuario(Base):
     senha = Column ("senha", String)
     ativo = Column ("ativo", Boolean)
     curador = Column ("curador", Boolean, default=False)
+    biografia = Column("biografia", Text, nullable=True)
+    foto_perfil = Column("foto_perfil", String, nullable=True)
 
     def __init__(self, nome, email, senha, ativo=True, admin=False, curador=False ):
         self.nome = nome 

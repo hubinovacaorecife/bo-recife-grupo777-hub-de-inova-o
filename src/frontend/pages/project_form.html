@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ff">
+  <meta name="description" content="Cadastre ou edite um projeto na REC SCIENCE.">
+  <title>Novo projeto · REC SCIENCE</title>
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/projects.css">
+</head>
+<body class="pagina-projetos">
+  <header class="topo">
+    <a class="marca" href="../index.html" aria-label="REC SCIENCE, página inicial">
+      <span class="marca-icone" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M8 9.5 16 16l8-6.5M9 23l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="8" cy="8" r="3" fill="currentColor"/>
+          <circle cx="24" cy="8" r="3" fill="currentColor"/>
+          <circle cx="16" cy="16" r="3.5" fill="#ffc83d"/>
+          <circle cx="8" cy="24" r="3" fill="currentColor"/>
+          <circle cx="24" cy="24" r="3" fill="currentColor"/>
+        </svg>
+      </span>
+      <span>REC <strong>SCIENCE</strong></span>
+    </a>
+    <nav class="navegacao" aria-label="Navegação principal">
+      <a href="projects.html">Projetos</a>
+      <a href="profile.html">Perfil</a>
+      <button class="botao pequeno" id="sair" type="button">Sair</button>
+    </nav>
+  </header>
+
+  <main class="projetos-main projeto-form-main">
+    <a class="projetos-voltar" href="projects.html">← Voltar aos projetos</a>
+    <section class="projeto-form-intro">
+      <span class="sobretitulo">COMPARTILHE SUA INICIATIVA</span>
+      <h1 id="form-titulo">Cadastrar projeto</h1>
+      <p>Apresente sua iniciativa e escolha a área que melhor a representa.</p>
+    </section>
+
+    <div class="projeto-form-layout">
+      <form class="projeto-form" id="form-projeto">
+        <div class="projeto-campo">
+          <label for="descricao">Descrição do projeto</label>
+          <textarea id="descricao" name="descricao" rows="7" required placeholder="Conte sobre a iniciativa, seus objetivos e o impacto esperado."></textarea>
+          <span class="projeto-campo-ajuda">Destaque o problema que sua iniciativa busca resolver.</span>
+        </div>
+        <div class="projeto-campo">
+          <label for="categoria">Área ou categoria</label>
+          <input id="categoria" name="categoria" type="text" list="categorias-sugeridas" required placeholder="Ex.: Educação">
+          <datalist id="categorias-sugeridas">
+            <option value="Educação"></option>
+            <option value="Saúde"></option>
+            <option value="Tecnologia"></option>
+            <option value="Meio ambiente"></option>
+            <option value="Mobilidade urbana"></option>
+            <option value="Empreendedorismo"></option>
+          </datalist>
+        </div>
+        <p class="projeto-form-ajuda">Os campos podem ser atualizados depois do cadastro.</p>
+        <p class="projetos-erro" id="form-erro" role="alert" hidden></p>
+        <p class="projeto-sucesso" id="form-sucesso" role="status" hidden></p>
+        <a class="botao botao-contorno projeto-sucesso-link" id="form-sucesso-link" href="projects.html" hidden>Voltar aos projetos</a>
+        <button class="botao" id="salvar-projeto" type="submit">Cadastrar projeto</button>
+      </form>
+
+      <aside class="projeto-form-guia">
+        <span class="projeto-form-guia-icone" aria-hidden="true">✳</span>
+        <span class="sobretitulo">DICAS PARA COMEÇAR</span>
+        <h2>Uma boa ideia merece ser compartilhada.</h2>
+        <ul>
+          <li>Explique sua iniciativa de forma simples.</li>
+          <li>Escolha a área que melhor representa seu projeto.</li>
+          <li>Revise as informações antes de salvar.</li>
+        </ul>
+        <div class="projeto-form-status">
+          <span>Status inicial</span>
+          <strong><span aria-hidden="true"></span> Rascunho</strong>
+          <p>Seu projeto começa como rascunho e pode ser atualizado depois.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script type="module" src="../js/pages/project_form.js"></script>
+</body>
+</html>

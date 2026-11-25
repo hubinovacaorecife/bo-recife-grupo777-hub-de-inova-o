@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ff">
+  <meta name="description" content="Informações do projeto na REC SCIENCE.">
+  <title>Projeto · REC SCIENCE</title>
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/projects.css">
+</head>
+<body class="pagina-projetos">
+  <header class="topo">
+    <a class="marca" href="../index.html" aria-label="REC SCIENCE, página inicial">
+      <span class="marca-icone" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M8 9.5 16 16l8-6.5M9 23l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="8" cy="8" r="3" fill="currentColor"/>
+          <circle cx="24" cy="8" r="3" fill="currentColor"/>
+          <circle cx="16" cy="16" r="3.5" fill="#ffc83d"/>
+          <circle cx="8" cy="24" r="3" fill="currentColor"/>
+          <circle cx="24" cy="24" r="3" fill="currentColor"/>
+        </svg>
+      </span>
+      <span>REC <strong>SCIENCE</strong></span>
+    </a>
+    <nav class="navegacao" aria-label="Navegação principal">
+      <a href="projects.html">Projetos</a>
+      <a href="profile.html">Perfil</a>
+      <button class="botao pequeno" id="sair" type="button">Sair</button>
+    </nav>
+  </header>
+
+  <main class="projetos-main projeto-detalhe-main">
+    <a class="projetos-voltar" href="projects.html">← Voltar aos projetos</a>
+    <section class="projeto-detalhe" id="projeto-detalhe" aria-busy="true">
+      <header class="projeto-detalhe-capa">
+        <div class="projeto-detalhe-capa-conteudo">
+          <span class="projeto-categoria" id="projeto-categoria">Carregando área...</span>
+          <span class="projeto-detalhe-id" id="projeto-id"></span>
+          <h1 id="projeto-titulo">Carregando projeto...</h1>
+        </div>
+        <span class="projeto-detalhe-simbolo" aria-hidden="true">✳</span>
+      </header>
+      <div class="projeto-detalhe-conteudo">
+        <span class="sobretitulo">SOBRE A INICIATIVA</span>
+        <p class="projeto-detalhe-descricao" id="projeto-descricao"></p>
+      </div>
+      <footer class="projeto-detalhe-rodape">
+        <p id="projeto-permissao" class="projeto-permissao" role="status" hidden></p>
+        <a class="botao" id="editar-projeto" href="#" hidden>Editar projeto</a>
+      </footer>
+    </section>
+    <p class="projetos-erro" id="projeto-erro" role="alert" hidden></p>
+  </main>
+
+  <script type="module" src="../js/pages/project.js"></script>
+</body>
+</html>

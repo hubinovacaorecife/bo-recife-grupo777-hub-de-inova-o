@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ff">
+  <meta name="description" content="Consulte os dados da sua conta REC SCIENCE.">
+  <title>Meu perfil · REC SCIENCE</title>
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/profile.css">
+</head>
+<body class="pagina-perfil">
+  <header class="topo">
+    <a class="marca" href="../index.html" aria-label="REC SCIENCE, página inicial">
+      <span class="marca-icone" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M8 9.5 16 16l8-6.5M9 23l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="8" cy="8" r="3" fill="currentColor"/>
+          <circle cx="24" cy="8" r="3" fill="currentColor"/>
+          <circle cx="16" cy="16" r="3.5" fill="#ffc83d"/>
+          <circle cx="8" cy="24" r="3" fill="currentColor"/>
+          <circle cx="24" cy="24" r="3" fill="currentColor"/>
+        </svg>
+      </span>
+      <span>REC <strong>SCIENCE</strong></span>
+    </a>
+    <nav class="navegacao" aria-label="Navegação principal">
+      <a href="../index.html">Voltar ao início</a>
+      <button class="botao pequeno" id="sair" type="button">Sair</button>
+    </nav>
+  </header>
+
+  <main class="perfil-main">
+    <section class="perfil-intro" aria-labelledby="titulo-perfil">
+      <span class="sobretitulo">SUA CONTA REC SCIENCE</span>
+      <h1 id="titulo-perfil">Meu perfil</h1>
+      <p>Confira os dados associados à sua conta.</p>
+    </section>
+
+    <section class="perfil-card" id="perfil-card" aria-labelledby="perfil-nome" aria-busy="true">
+      <div class="perfil-capa">
+        <span>PERFIL DO PESQUISADOR</span>
+        <span class="perfil-capa-simbolo" aria-hidden="true">✳</span>
+      </div>
+      <div class="perfil-resumo">
+        <div class="perfil-avatar" aria-hidden="true">
+          <img id="perfil-foto" alt="" hidden>
+          <span id="perfil-iniciais">RS</span>
+        </div>
+        <div class="perfil-identidade">
+          <h2 id="perfil-nome">Carregando perfil...</h2>
+          <p id="perfil-email">Buscando os dados da sua conta</p>
+        </div>
+        <span class="perfil-status" id="perfil-status">Carregando</span>
+      </div>
+      <div class="perfil-dados">
+        <div class="perfil-dado">
+          <span>Identificador da conta</span>
+          <strong id="perfil-id">—</strong>
+        </div>
+        <div class="perfil-dado">
+          <span>Situação</span>
+          <strong id="perfil-ativo">—</strong>
+        </div>
+      </div>
+    </section>
+
+    <form class="perfil-editor" id="form-perfil" hidden>
+      <div class="perfil-editor-cabecalho">
+        <div>
+          <span class="sobretitulo">PERSONALIZE SEU ESPAÇO</span>
+          <h2>Editar perfil</h2>
+          <p>Conte um pouco sobre você e sua atuação.</p>
+        </div>
+      </div>
+
+      <div class="perfil-campo-foto">
+        <label for="foto-perfil">Foto de perfil</label>
+        <input id="foto-perfil" name="foto" type="file" accept="image/png,image/jpeg,image/webp">
+        <p class="perfil-ajuda" id="foto-ajuda">PNG, JPG ou WebP. Tamanho máximo: 5 MB.</p>
+        <button class="botao pequeno botao-contorno" id="remover-foto" type="button" hidden>Remover foto</button>
+      </div>
+
+      <div class="perfil-campo-biografia">
+        <label for="biografia">Biografia</label>
+        <textarea id="biografia" name="biografia" rows="5" maxlength="1000" placeholder="Fale sobre sua trajetória, pesquisa ou área de atuação."></textarea>
+        <p class="perfil-ajuda">Até 1.000 caracteres.</p>
+      </div>
+
+      <div class="perfil-editor-acoes">
+        <p class="perfil-salvar-erro" id="erro-atualizar-perfil" role="alert" hidden></p>
+        <p class="perfil-salvar-sucesso" id="sucesso-atualizar-perfil" role="status" hidden></p>
+        <button class="botao" id="salvar-perfil" type="submit">Salvar alterações</button>
+      </div>
+    </form>
+
+    <p class="perfil-erro" id="perfil-erro" role="alert" hidden></p>
+    <button class="botao botao-tentar" id="tentar-novamente" type="button" hidden>Tentar novamente</button>
+    <p class="perfil-nota">Seus dados são carregados com segurança a partir da sua conta.</p>
+  </main>
+
+  <script type="module" src="../js/pages/profile.js"></script>
+</body>
+</html>

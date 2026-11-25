@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f0fb">
+  <meta name="description" content="Crie sua conta no REC SCIENCE e faça parte da rede de inovação de Recife.">
+  <title>Criar conta · REC SCIENCE</title>
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body class="auth">
+  <main class="cartao cartao-cadastro">
+    <a class="voltar-inicio" href="../index.html">← <span>Voltar ao início</span></a>
+    <header class="auth-cabecalho">
+      <span class="marca-cadastro">REC <strong>SCIENCE</strong></span>
+      <h1>Criar conta</h1>
+      <p class="sub">Preencha seus dados para começar</p>
+    </header>
+
+    <form id="form-conta" novalidate>
+      <div class="campo">
+        <label for="nome">Nome</label>
+        <input id="nome" type="text" autocomplete="name" placeholder="Seu nome completo" required>
+      </div>
+
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" autocomplete="email" placeholder="seuemail@exemplo.com" required>
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <div class="campo-senha">
+          <input id="senha" type="password" autocomplete="new-password" placeholder="Mínimo de 6 caracteres" minlength="6" required>
+          <button class="alternar-senha" type="button" data-alternar-senha="senha" aria-label="Mostrar senha" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="1.7"/>
+              <circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.7"/>
+              <path class="risco-olho" d="m4 4 16 16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="confirmar-senha">Confirmar senha</label>
+        <div class="campo-senha">
+          <input id="confirmar-senha" type="password" autocomplete="new-password" placeholder="Digite a senha novamente" required>
+          <button class="alternar-senha" type="button" data-alternar-senha="confirmar-senha" aria-label="Mostrar confirmação da senha" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="1.7"/>
+              <circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.7"/>
+              <path class="risco-olho" d="m4 4 16 16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <label class="check" for="termos">
+        <input id="termos" type="checkbox" required>
+        <span>Li e concordo com os termos de uso</span>
+      </label>
+
+      <p id="erro" class="erro" role="alert" aria-live="polite" hidden></p>
+      <button type="submit" class="botao">Criar conta</button>
+    </form>
+
+    <p class="rodape">Já tem conta? <a href="login.html">Entrar</a></p>
+  </main>
+
+  <script type="module" src="../js/pages/create_account.js"></script>
+</body>
+</html>
