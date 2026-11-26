@@ -58,11 +58,19 @@ def listar_projetos(id_projeto: int, db: Session = Depends(pegar_sessao)):
         raise HTTPException(status_code=404, detail="Nenhum projeto encontrado")
     return [
         {
-        "id": projetos.id,
-        "descricao": projetos.descricao,
-        "categoria": projetos.categoria
-    }
-
+            "id": projetos.id,
+            "titulo": projetos.titulo,
+            "descricao": projetos.descricao,
+            "categoria": projetos.categoria,
+            "status": projetos.status,
+            "protocolo": projetos.protocolo,
+            "ods": projetos.ods,
+            "ano": projetos.ano,
+            "autores": projetos.autores,
+            "instituicao": projetos.instituicao,
+            "origem": projetos.origem,
+            "fonte_url": projetos.fonte_url,
+        }
     ]
 
 @projects_router.get("/meus_projetos")
@@ -83,10 +91,17 @@ def info_projetos(session: Session = Depends(pegar_sessao)):
     return [
         {
             "id": projeto.id,
+            "titulo": projeto.titulo,
             "descricao": projeto.descricao,
             "categoria": projeto.categoria,
             "status": projeto.status,
-            "protocolo": projeto.protocolo
+            "protocolo": projeto.protocolo,
+            "ods": projeto.ods,
+            "ano": projeto.ano,
+            "autores": projeto.autores,
+            "instituicao": projeto.instituicao,
+            "origem": projeto.origem,
+            "fonte_url": projeto.fonte_url,
         }
         for projeto in projetos
     ]

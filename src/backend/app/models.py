@@ -33,21 +33,31 @@ class Projeto(Base):
     __tablename__ = "projetos"
 
     id = Column("id", Integer, primary_key=True, autoincrement=True)
-    categoria = Column("categoria", String) #educaçao, saude, meio-ambiente, mobilidade urbana
-    descricao = Column("descricao", String)
-    status = Column("status", String, default="Rascunho") #em análise, aprovado, reprovado, cancelado
-    usuario = Column ("usuario", ForeignKey("usuarios.id"))
-    data_criacao = Column("data_criacao", String)
-    protocolo = Column("protocolo", Integer, unique=True, index=True, nullable=False )
+    titulo = Column("titulo", String, nullable=True)
+    categoria = Column("categoria", String)  # educacao, saude, meio-ambiente, mobilidade urbana
+    descricao = Column("descricao", Text, nullable=True)
+    status = Column("status", String, default="Rascunho")  # em análise, aprovado, reprovado, cancelado
+    usuario = Column("usuario", ForeignKey("usuarios.id"), nullable=True)
+    data_criacao = Column("data_criacao", String, nullable=True)
+    protocolo = Column("protocolo", Integer, unique=True, index=True, nullable=False)
+
+    # Campos para importação externa (OpenAlex / repositórios)
+    ods = Column("ods", Integer, nullable=True)
+    ano = Column("ano", Integer, nullable=True)
+    autores = Column("autores", Text, nullable=True)
+    instituicao = Column("instituicao", String, nullable=True)
+    origem = Column("origem", String, default="manual")  # "manual" ou "importado"
+    fonte_id = Column("fonte_id", String, unique=True, index=True, nullable=True)
+    fonte_url = Column("fonte_url", String, nullable=True)
     
 
-    def __init__(self, usuario, protocolo, descricao, categoria, status="Rascunho", data_criacao=None):
-        self.usuario = usuario
-        self.descricao = descricao
-        self.categoria = categoria
-        self.status = status
-        self.data_criacao = data_criacao
-        self.protocolo = protocolo
+    # def __init__(self, usuario, protocolo, descricao, categoria, status="Rascunho", data_criacao=None):
+    #     self.usuario = usuario
+    #     self.descricao = descricao
+    #     self.categoria = categoria
+    #     self.status = status
+    #     self.data_criacao = data_criacao
+    #     self.protocolo = protocolo
 
 
         
